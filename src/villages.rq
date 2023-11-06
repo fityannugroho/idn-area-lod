@@ -1,0 +1,22 @@
+PREFIX idnarea: <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/definitions.ttl#>
+
+CONSTRUCT
+{
+  ?village a idnarea:Village ;
+    idnarea:code ?code ;
+    idnarea:name ?name ;
+    idnarea:isPartOf ?district ;
+  .
+}
+WHERE
+{
+  ?villageRow <#code> ?code ;
+    <#name> ?name ;
+    <#district_code> ?district_code ;
+  .
+
+  # Building URI from base URI and ID
+  BIND(URI(CONCAT("http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/districts.ttl#", ?code)) AS ?village)
+
+  BIND(URI(CONCAT("http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/regencies.ttl#", ?district_code)) AS ?district)
+}

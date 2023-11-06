@@ -1,0 +1,18 @@
+PREFIX idnarea: <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/definitions.ttl#>
+
+CONSTRUCT
+{
+  ?province a idnarea:Province ;
+    idnarea:code ?code ;
+    idnarea:name ?name ;
+  .
+}
+WHERE
+{
+  ?provinceRow <#code> ?code ;
+    <#name> ?name ;
+  .
+
+  # Building URI from base URI and ID
+  BIND(URI(CONCAT("http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/provinces.ttl#", ?code)) AS ?province)
+}
