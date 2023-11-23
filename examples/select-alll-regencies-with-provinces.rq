@@ -1,0 +1,16 @@
+PREFIX idnarea: <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/definitions.ttl#>
+
+SELECT ?provinceCode ?provinceName ?regencyCode ?regencyName
+FROM <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/provinces.ttl#>
+FROM <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/regencies.ttl#>
+WHERE {
+  ?regency a idnarea:Regency ;
+    idnarea:code ?regencyCode ;
+    idnarea:name ?regencyName ;
+    idnarea:isPartOf ?province .
+
+  ?province a idnarea:Province ;
+    idnarea:code ?provinceCode ;
+    idnarea:name ?provinceName .
+}
+ORDER BY ASC(?regencyCode)

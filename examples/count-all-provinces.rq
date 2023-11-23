@@ -1,0 +1,7 @@
+PREFIX idnarea: <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/definitions.ttl#>
+
+SELECT (COUNT(?province) AS ?count)
+FROM <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/provinces.ttl#>
+WHERE {
+  ?province a idnarea:Province .
+}

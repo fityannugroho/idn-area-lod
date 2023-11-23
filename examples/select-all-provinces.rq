@@ -1,0 +1,10 @@
+PREFIX idnarea: <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/definitions.ttl#>
+
+SELECT ?code ?name
+FROM <http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/provinces.ttl#>
+WHERE {
+  ?province a idnarea:Province ;
+    idnarea:code ?code ;
+    idnarea:name ?name .
+}
+ORDER BY ASC(?name)
