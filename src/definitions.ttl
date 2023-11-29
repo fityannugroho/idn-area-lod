@@ -3,131 +3,97 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix sf: <http://www.opengis.net/ont/sf#> .
-@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix schema: <http://schema.org/> .
 
-idnarea: a owl:Ontology ;
-  dcterms:title "Indonesia Area Ontology"@en ,
-    "Ontologi Wilayah Indonesia"@id ;
-  dcterms:creator [
-    a schema:Person ;
-    schema:name "Fityandhiya Islam Nugroho" ;
-    schema:email "fityannugroho@gmail.com"^^xsd:anyURI ;
-  ] ;
-  dcterms:description "Vocabulary for representing area of Indonesia"@en ,
-    "Kosa kata untuk merepresentasikan wilayah Indonesia"@id ;
-  dcterms:source <http://github.com/fityannugroho/idn-area-lod> ;
-  rdfs:seeAlso <http://github.com/fityannugroho/idn-area-lod> ;
-.
-
-idnarea:Area a rdf:Class ;
-  rdf:type owl:Class ;
+idnarea:Area a rdf:Class, owl:Class ;
   rdfs:label "area"@en ,
     "wilayah"@id ;
   rdfs:comment "Define an administrative area in Indonesia"@en ,
     "Mendefinisikan sebuah wilayah administratif di Indonesia"@id ;
-  rdfs:isDefinedBy idnarea: ;
-  rdfs:subClassOf schema:AdministrativeArea ;
-  rdfs:subClassOf dbpedia:GovernmentalAdministrativeRegion ;
+  rdfs:subClassOf schema:AdministrativeArea,
+    dbo:GovernmentalAdministrativeRegion ;
 .
 
-idnarea:code a rdf:Property ;
-  rdf:type owl:DatatypeProperty ;
+idnarea:code a rdf:Property, owl:DatatypeProperty ;
   rdfs:label "code"@en ,
     "kode"@id ;
   rdfs:comment "The unique area code"@en ,
     "Kode wilayah yang unik"@id ;
-  rdfs:isDefinedBy idnarea: ;
   rdfs:domain idnarea:Area ;
   rdfs:range xsd:string ;
-  owl:equivalentProperty schema:identifier ;
-  owl:equivalentProperty dbpedia:code ;
+  owl:equivalentProperty schema:identifier,
+    dbo:code ;
 .
 
-idnarea::name a rdf:Property ;
-  rdf:type owl:DatatypeProperty ;
+idnarea::name a rdf:Property, owl:DatatypeProperty ;
   rdfs:label "name"@en ,
     "nama"@id ;
   rdfs:comment "The name of area"@en ,
     "Nama wilayah"@id ;
-  rdfs:isDefinedBy idnarea: ;
   rdfs:domain idnarea:Area ;
   rdfs:range xsd:string ;
-  owl:equivalentProperty schema:name ;
-  owl:equivalentProperty dbpedia:name ;
+  owl:equivalentProperty schema:name,
+    dbo:name ;
 .
 
-idnarea:isPartOf a rdf:Property ;
-  rdf:type owl:ObjectProperty ;
+idnarea:isPartOf a rdf:Property, owl:ObjectProperty ;
   rdfs:label "is part of"@en ,
     "adalah bagian dari"@id ;
   rdfs:comment "Define that an area is part of another area which is larger, or administratively higher"@en ,
     "Mendefinisikan bahwa suatu wilayah merupakan bagian dari wilayah lain yang lebih besar, atau secara administratif lebih tinggi"@id ;
-  rdfs:isDefinedBy idnarea: ;
   rdfs:domain idnarea:Area ;
   rdfs:range idnarea:Area ;
-  rdfs:subPropertyOf schema:containedInPlace ;
-  rdfs:subPropertyOf dbpedia:isPartOf ;
+  rdfs:subPropertyOf schema:containedInPlace,
+    dbo:isPartOf ;
 .
 
-idnarea:Province a rdf:Class ;
-  rdf:type owl:Class ;
+idnarea:Province a rdf:Class, owl:Class ;
   rdfs:label "province"@en ,
     "provinsi"@id ;
-  rdfs:subClassOf idnarea:Area ;
   rdfs:comment "Define a province in Indonesia"@en ,
     "Mendefinisikan sebuah provinsi di Indonesia"@id ;
-  rdfs:isDefinedBy idnarea: ;
-  rdfs:subClassOf dbpedia:Province ;
+  rdfs:subClassOf idnarea:Area,
+    dbo:Province ;
 .
 
-idnarea:Regency a rdf:Class ;
-  rdf:type owl:Class ;
+idnarea:Regency a rdf:Class, owl:Class ;
   rdfs:label "regency"@en ,
     "kabupaten"@id ;
-  rdfs:subClassOf idnarea:Area ;
   rdfs:comment "Define a regency in Indonesia"@en ,
     "Mendefinisikan sebuah kabupaten di Indonesia"@id ;
-  rdfs:isDefinedBy idnarea: ;
-  rdfs:subClassOf dbpedia:Regency ;
+  rdfs:subClassOf idnarea:Area,
+    dbo:Regency ;
   idnarea:isPartOf idnarea:Province ;
 .
 
-idnarea:District a rdf:Class ;
-  rdf:type owl:Class ;
+idnarea:District a rdf:Class, owl:Class ;
   rdfs:label "district"@en ,
     "kecamatan"@id ;
-  rdfs:subClassOf idnarea:Area ;
   rdfs:comment "Define a district in Indonesia"@en ,
     "Mendefinisikan sebuah kecamatan di Indonesia"@id ;
-  rdfs:isDefinedBy idnarea: ;
-  rdfs:subClassOf dbpedia:District ;
+  rdfs:subClassOf idnarea:Area,
+    dbo:District ;
   idnarea:isPartOf idnarea:Regency ;
 .
 
-idnarea:Village a rdf:Class ;
-  rdf:type owl:Class ;
+idnarea:Village a rdf:Class, owl:Class ;
   rdfs:label "village"@en ,
     "desa"@id ;
-  rdfs:subClassOf idnarea:Area ;
   rdfs:comment "Define a village in Indonesia"@en ,
     "Mendefinisikan sebuah desa di Indonesia"@id ;
-  rdfs:isDefinedBy idnarea: ;
-  rdfs:subClassOf dbpedia:Village ;
+  rdfs:subClassOf idnarea:Area,
+    dbo:Village ;
   idnarea:isPartOf idnarea:District ;
 .
 
-idnarea:Island a rdf:Class ;
-  rdf:type owl:Class ;
+idnarea:Island a rdf:Class, owl:Class ;
   rdfs:label "island"@en ,
     "pulau"@id ;
-  rdfs:subClassOf idnarea:Area ;
   rdfs:comment "Define an island in Indonesia"@en ,
     "Mendefinisikan sebuah pulau di Indonesia"@id ;
-  rdfs:isDefinedBy idnarea: ;
-  rdfs:subClassOf dbpedia:Island ;
+  rdfs:subClassOf idnarea:Area,
+    dbo:Island ;
   idnarea:isPartOf idnarea:Regency ;
 .
