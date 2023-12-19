@@ -16,8 +16,8 @@ WHERE
   .
 
   # Building URI from base URI and ID
-  BIND(URI(CONCAT("http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/regencies.ttl#", ?code)) AS ?regency)
+  BIND(URI(CONCAT(STR(<>), "/regencies.ttl#", ?code)) AS ?regency)
 
   # Bind ?province to URI using `province_code` column
-  BIND(URI(CONCAT("http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res/provinces.ttl#", ?province_code)) AS ?province)
+  BIND(URI(CONCAT(STR(<>), "/provinces.ttl#", ?province_code)) AS ?province)
 }

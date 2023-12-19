@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-
-if [ "$#" -ne 1 ]; then
-  echo "Usage:   $0 <base_url>" >&2
-  echo "Example: $0 https://localhost:4443/" >&2
-  exit 1
-fi
-
-base="$1"
+base="http://raw.githubusercontent.com/fityannugroho/idn-area-lod/main/src/res"
 
 # Provinces
 cat node_modules/idn-area-data/data/provinces.csv \
